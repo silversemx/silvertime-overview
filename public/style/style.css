@@ -47,3 +47,10 @@ html, body, #root, .App {
 		justify-content: start;
 	}
 }
+
+/*** card ***/
+
+.card {
+	border: none !important;
+	cursor: pointer !important;
+}
