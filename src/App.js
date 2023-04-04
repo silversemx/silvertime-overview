@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 // Components
 import Header from './components/main/Header';
 import Services from './components/services/Services';
+import Maintenance from './components/maintenance/Maintenance';
 
 // Redux
 import { Provider } from 'react-redux';
@@ -20,6 +21,7 @@ const App = () => {
 					<Routes>
 						<Route path='/' element={ <Navigate to='/services' /> } />
 						<Route path='/services' element={ <Services /> } />
+						<Route path='/maintenance' element={ <Maintenance /> } />
 					</Routes>
 				</div>
 			</Router>

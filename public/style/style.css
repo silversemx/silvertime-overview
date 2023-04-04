@@ -52,5 +52,11 @@ html, body, #root, .App {
 
 .card {
 	border: none !important;
-	cursor: pointer !important;
+	border-radius: 20px !important;
+}
+
+/*** schedule ***/
+
+.schedule-text {
+	font-size: 14px;
 }

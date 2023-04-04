@@ -16,8 +16,8 @@ const Header = () => {
 				<Navbar.Collapse id='navbarScroll'>
 					<Nav className='w-100 me-auto' navbarScroll>
 						<Container className='nav-container' fluid>
-							<Nav.Link className='header-link' active={window.location.pathname.includes('/services')}>Services</Nav.Link>
-							<Nav.Link className='header-link'>Maintenance</Nav.Link>
+							<Nav.Link href='/services' className='header-link' active={window.location.pathname.includes('/services')}>Services</Nav.Link>
+							<Nav.Link href='/maintenance' className='header-link' active={window.location.pathname.includes('/maintenance')}>Maintenance</Nav.Link>
 							<Nav.Link className='header-link'>Incidents</Nav.Link>
 							<Nav.Link className='header-link'>Reports</Nav.Link>
 						</Container>
