@@ -11,13 +11,12 @@ const Header = () => {
 					<img className='d-inline-block align-top me-2' height={'30px'} alt='Silvertime'
 						src={process.env.PUBLIC_URL + '/assets/silvertime.png'}
 					/>
-					Silverse
 				</Navbar.Brand>
 				<Navbar.Toggle aria-controls='navbarScroll' />
 				<Navbar.Collapse id='navbarScroll'>
 					<Nav className='w-100 me-auto' navbarScroll>
 						<Container className='nav-container' fluid>
-							<Nav.Link className='header-link'>Services</Nav.Link>
+							<Nav.Link className='header-link' active={window.location.pathname.includes('/services')}>Services</Nav.Link>
 							<Nav.Link className='header-link'>Maintenance</Nav.Link>
 							<Nav.Link className='header-link'>Incidents</Nav.Link>
 							<Nav.Link className='header-link'>Reports</Nav.Link>
