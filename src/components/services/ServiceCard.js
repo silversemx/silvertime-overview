@@ -6,6 +6,9 @@ import { Card, Col, Row } from 'react-bootstrap';
 // Packages
 import PropTypes from 'prop-types';
 
+// Components
+import StatusBar from './status/StatusBar';
+
 const Status = (props) => {
 	const { status } = props;
 
@@ -46,6 +49,29 @@ const ServiceCard = (props) => {
 					</Col>
 				</Row>
 				<Card.Subtitle className='mb-2 text-muted'>Algo bonito</Card.Subtitle>
+				<div className='d-flex align-items-end'>
+					<StatusBar 
+						statusInfo={{
+							status: 'operational',
+							date: new Date().toLocaleString('es-MX', { timeZone: 'CST' }),
+							description: 'Descripcion del status'
+						}}
+					/>
+					<StatusBar 
+						statusInfo={{
+							status: 'down',
+							date: new Date().toLocaleString('es-MX', { timeZone: 'CST' }),
+							description: 'Descripcion del status'
+						}}
+					/>
+					<StatusBar 
+						statusInfo={{
+							status: 'warning',
+							date: new Date().toLocaleString('es-MX', { timeZone: 'CST' }),
+							description: 'Descripcion del status'
+						}}
+					/>
+				</div>
 			</Card.Body>
 		</Card>
 	);
