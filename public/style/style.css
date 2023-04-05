@@ -60,3 +60,10 @@ html, body, #root, .App {
 .schedule-text {
 	font-size: 14px;
 }
+
+/*** buttons ***/
+
+.btn:focus, .btn:active, .btn-close:focus, .btn-close:active {
+	outline: none !important;
+	box-shadow: none !important;
+}

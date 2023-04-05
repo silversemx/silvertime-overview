@@ -33,7 +33,7 @@ const Status = (props) => {
 Status.propTypes = {}
 
 const ServiceCard = (props) => {
-	const { name, description, type, status, statusInfo } = props;
+	const { name, description, type, status, statusInfo, setShowModal } = props;
 
 	return (
 		<Card className='mb-4'>
@@ -51,10 +51,12 @@ const ServiceCard = (props) => {
 				<Card.Subtitle className='mb-2 text-muted'>{description}</Card.Subtitle>
 				<div className='d-flex align-items-end'>
 					{statusInfo.map((info, idx) => (
-						<StatusBar
+						<div 
 							key={idx}
-							statusInfo={info}
-						/>
+							onClick={() => setShowModal()}
+						>
+							<StatusBar statusInfo={info} />
+						</div>
 					))}
 				</div>
 			</Card.Body>
