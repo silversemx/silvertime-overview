@@ -33,7 +33,7 @@ const Status = (props) => {
 Status.propTypes = {}
 
 const ServiceCard = (props) => {
-	const { name, type, status } = props;
+	const { name, description, type, status, statusInfo } = props;
 
 	return (
 		<Card className='mb-4'>
@@ -48,29 +48,14 @@ const ServiceCard = (props) => {
 						<Status status={status} />
 					</Col>
 				</Row>
-				<Card.Subtitle className='mb-2 text-muted'>Algo bonito, tal vez una descripcion del servicio</Card.Subtitle>
+				<Card.Subtitle className='mb-2 text-muted'>{description}</Card.Subtitle>
 				<div className='d-flex align-items-end'>
-					<StatusBar 
-						statusInfo={{
-							status: 'operational',
-							date: new Date().toLocaleString('es-MX', { timeZone: 'CST' }),
-							description: 'Descripcion del status'
-						}}
-					/>
-					<StatusBar 
-						statusInfo={{
-							status: 'down',
-							date: new Date().toLocaleString('es-MX', { timeZone: 'CST' }),
-							description: 'Descripcion del status'
-						}}
-					/>
-					<StatusBar 
-						statusInfo={{
-							status: 'warning',
-							date: new Date().toLocaleString('es-MX', { timeZone: 'CST' }),
-							description: 'Descripcion del status'
-						}}
-					/>
+					{statusInfo.map((info, idx) => (
+						<StatusBar
+							key={idx}
+							statusInfo={info}
+						/>
+					))}
 				</div>
 			</Card.Body>
 		</Card>

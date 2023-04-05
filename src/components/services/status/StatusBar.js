@@ -12,7 +12,7 @@ const StatusBar = (props) => {
 	const placement = 'bottom';
 
 	const statusBarStyles = {
-		height: statusInfo?.status === 'operational' ? '35px' : statusInfo?.status === 'warning' ? '28px' : '18px',
+		height: '35px',
 		width: '6px',
 		backgroundColor: statusInfo?.status === 'operational' ? '#06c281' : statusInfo?.status === 'warning' ? '#f7d54a' : '#ef4b4c',
 		borderRadius: '5px',
@@ -26,7 +26,7 @@ const StatusBar = (props) => {
 			overlay={
 				<Popover id='popover-basic'>
 					<Popover.Body>
-						<p>{statusInfo?.date}</p>
+						<p className='schedule-text text-muted'>{new Date(statusInfo?.date).toString('es-MX', { timeZone: 'CST' })}</p>
 						<p className='mb-0'>{statusInfo?.description}</p>
 					</Popover.Body>
 				</Popover>

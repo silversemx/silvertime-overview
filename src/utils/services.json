@@ -1,0 +1,103 @@
+{
+	"services": [
+		{
+			"name": "Servicio PC",
+			"description": "Algo bonito, tal vez una descripcion del servicio",
+			"type": "pc",
+			"status": "operational",
+			"statusInfo": [
+				{
+					"status": "operational",
+					"date": 1680636378,
+					"description": "No paso nada"
+				},
+				{
+					"status": "down",
+					"date": 1680636400,
+					"description": "Se cayo esta basura"
+				},
+				{
+					"status": "operational",
+					"date": 1680636425,
+					"description": "No paso nada"
+				},
+				{
+					"status": "operational",
+					"date": 1680636457,
+					"description": "No paso nada"
+				},
+				{
+					"status": "operational",
+					"date": 1680636480,
+					"description": "No paso nada"
+				}
+			]
+		},
+		{
+			"name": "Servicio Movil",
+			"description": "Algo bonito, tal vez una descripcion del servicio",
+			"type": "phone",
+			"status": "warning",
+			"statusInfo": [
+				{
+					"status": "operational",
+					"date": 1680636649,
+					"description": "No paso nada"
+				},
+				{
+					"status": "warning",
+					"date": 1680636666,
+					"description": "Paso algo pero no devastador"
+				},
+				{
+					"status": "operational",
+					"date": 1680636669,
+					"description": "No paso nada"
+				},
+				{
+					"status": "operational",
+					"date": 1680636673,
+					"description": "No paso nada"
+				},
+				{
+					"status": "warning",
+					"date": 1680636677,
+					"description": "Paso algo pero no devastador"
+				}
+			]
+		},
+		{
+			"name": "Servicio Movil",
+			"description": "Algo bonito, tal vez una descripcion del servicio",
+			"type": "phone",
+			"status": "down",
+			"statusInfo": [
+				{
+					"status": "operational",
+					"date": 1680636712,
+					"description": "No paso nada"
+				},
+				{
+					"status": "operational",
+					"date": 1680636725,
+					"description": "No paso nada"
+				},
+				{
+					"status": "down",
+					"date": 1680636716,
+					"description": "Se cayo esta basura"
+				},
+				{
+					"status": "warning",
+					"date": 1680636677,
+					"description": "Paso algo pero no devastador"
+				},
+				{
+					"status": "operational",
+					"date": 1680636746,
+					"description": "No paso nada"
+				}
+			]
+		}
+	]
+}
