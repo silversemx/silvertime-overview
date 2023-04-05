@@ -9,20 +9,18 @@ import PropTypes from 'prop-types';
 const StatusBar = (props) => {
 	const { statusInfo } = props;
 
-	const placement = 'bottom';
-
 	const statusBarStyles = {
 		height: '35px',
 		width: '6px',
 		backgroundColor: statusInfo?.status === 'operational' ? '#06c281' : statusInfo?.status === 'warning' ? '#f7d54a' : '#ef4b4c',
 		borderRadius: '5px',
-		marginRight: '5px'
+		marginRight: '5px',
+		cursor: 'pointer'
 	}
 
 	return (
 		<OverlayTrigger
-			key={placement}
-			placement={placement}
+			placement='bottom'
 			overlay={
 				<Popover id='popover-basic'>
 					<Popover.Body>
