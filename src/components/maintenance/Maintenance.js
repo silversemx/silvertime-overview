@@ -19,7 +19,13 @@ const Post = (props) => {
 	return (
 		<Card className='mb-5'>
 			<Card.Body>
-				<p className='fs-4 m-0'>{title}</p>
+				<p
+					className='fs-4 m-0'
+					style={{ cursor: 'pointer' }}
+					onClick={() => navigateTo(`/maintenance/${id}/info`)}
+				>
+					{title}
+				</p>
 				<p className='schedule-text text-muted m-0'>From: {new Date(schedule?.from).toString('es-MX', { timeZone: 'CST' })}</p>
 				<p className='schedule-text text-muted'>To: {new Date(schedule?.to).toString('es-MX', { timeZone: 'CST' })}</p>
 				<hr/>
