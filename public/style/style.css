@@ -67,3 +67,9 @@ html, body, #root, .App {
 	outline: none !important;
 	box-shadow: none !important;
 }
+
+/*** react-quill ***/
+
+.ql-editor {
+	padding: 0 !important;
+}
