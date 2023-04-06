@@ -1,9 +1,12 @@
 import React, { Fragment } from 'react';
+import { useLocation } from "react-router-dom";
 
 // React Bootstrap
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 
 const Header = () => {
+	let location = useLocation();
+	
 	return (
 		<Navbar className='header' expand='lg'>
 			<Container fluid>
@@ -16,10 +19,10 @@ const Header = () => {
 				<Navbar.Collapse id='navbarScroll'>
 					<Nav className='w-100 me-auto' navbarScroll>
 						<Container className='nav-container' fluid>
-							<Nav.Link href='/services' className='header-link' active={window.location.pathname.includes('/services')}>Services</Nav.Link>
-							<Nav.Link href='/maintenance' className='header-link' active={window.location.pathname.includes('/maintenance')}>Maintenance</Nav.Link>
-							<Nav.Link className='header-link'>Incidents</Nav.Link>
-							<Nav.Link className='header-link'>Reports</Nav.Link>
+							<Nav.Link href='/services' className='header-link' active={location.pathname.includes('/services')}>Services</Nav.Link>
+							<Nav.Link href='/maintenance' className='header-link' active={location.pathname.includes('/maintenance')}>Maintenance</Nav.Link>
+							<Nav.Link href='/incidents' className='header-link' active={location.pathname.includes('/incidents')}>Incidents</Nav.Link>
+							<Nav.Link href='/reports' className='header-link' active={location.pathname.includes('/reports')}>Reports</Nav.Link>
 						</Container>
 					</Nav>
 					<Nav>
