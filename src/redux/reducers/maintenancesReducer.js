@@ -4,7 +4,7 @@ import {
 } from '../types';
 
 const initialState = {
-	all_maintenances: { count: 0, maintenances: [] },
+	all_maintenances: { count: 0, maintenances: [], past: [] },
 	maintenances_errors: {}
 }
 
@@ -16,7 +16,8 @@ export default function maintenancesReducer(state = initialState, action){
 				...state,
 				all_maintenances: {
 					count: action.payload.count,
-					maintenances: action.payload.maintenances
+					maintenances: action.payload.maintenances.filter(m => m.status !== 3 && m.status !== 4),
+					past: action.payload.maintenances.filter(m => m.status === 3 && m.status === 4),
 				}
 			}
 		case ALL_MAINTENANCES_GET_ERROR:
