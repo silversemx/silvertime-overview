@@ -42,7 +42,7 @@ const Post = (props) => {
 
 const Maintenance = () => {
 	return (
-		<Container className='my-3'>
+		<Container className='custom-container'>
 			<h2>Scheduled Maintenance</h2>
 			<p className='mb-4'>This page is used to list the scheduled maintenance to be performed on the services.</p>
 			{maintenanceJSON.maintenance.map((post, idx) => (

@@ -90,6 +90,14 @@ html, body, #root, .App {
 	}
 }
 
+/*** custom container ***/
+
+.custom-container {
+	margin-top: 1rem;
+	margin-bottom: 5rem;
+	min-height: 90vh;
+}
+
 /*** card ***/
 
 .card {

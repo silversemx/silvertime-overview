@@ -20,7 +20,7 @@ const Services = () => {
 	const [selectedRange, setSelectedRange] = useState([ null, dayjs(dayjs(), dateFormat) ]);
 
 	return (
-		<Container className='my-3'>
+		<Container className='custom-container'>
 			<StatusModal
 				show={showModal}
 				onHide={() => setShowModal(false)}
