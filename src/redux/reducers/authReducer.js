@@ -11,8 +11,7 @@ let initialState = {
 
 export default function authReducer (state = initialState, action) {
 	switch (action.type) {
-		case SET_CURRENT_USER: 
-			delete state.auth_errors.user_set_current
+		case SET_CURRENT_USER:
 			return {
 				...state,
 				isAuthenticated: !isEmpty (action.payload),
