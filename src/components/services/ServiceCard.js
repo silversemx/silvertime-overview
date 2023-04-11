@@ -33,7 +33,7 @@ const Status = (props) => {
 Status.propTypes = {}
 
 const ServiceCard = (props) => {
-	const { name, description, type, status, statusInfo, setShowModal } = props;
+	const { serviceInfo, selectedRange, setShowModal } = props;
 
 	return (
 		<Card className='mb-4'>
@@ -41,16 +41,16 @@ const ServiceCard = (props) => {
 				<Row>
 					<Col lg={10}>
 						<h5>
-							{name} <i className={`bi bi-${type}`}></i>
+							{serviceInfo?.name}
 						</h5>
 					</Col>
-					<Col lg={2}>
+					{/* <Col lg={2}>
 						<Status status={status} />
-					</Col>
+					</Col> */}
 				</Row>
-				<Card.Subtitle className='mb-2 text-muted'>{description}</Card.Subtitle>
+				<Card.Subtitle className='mb-2 text-muted'>{serviceInfo?.description}</Card.Subtitle>
 				<div className='d-flex align-items-end'>
-					{statusInfo.map((info, idx) => (
+					{serviceState?.data.map((info, idx) => (
 						<div 
 							key={idx}
 							onClick={() => setShowModal()}

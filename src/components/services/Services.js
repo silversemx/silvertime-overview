@@ -66,11 +66,8 @@ const Services = () => {
 			{all_services.services.map((service, idx) => (
 				<ServiceCard
 					key={idx}
-					name={service?.name}
-					description={service?.description}
-					type={service?.type}
-					status={service?.status}
-					statusInfo={service?.statusInfo}
+					serviceInfo={service}
+					selectedRange={selectedRange}
 					setShowModal={() => setShowModal(true)}
 				/>
 			))}
