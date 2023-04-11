@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 
 // Components
 import Header from './components/main/Header';
+import Footer from './components/main/Footer';
 import Services from './components/services/Services';
 import Maintenance from './components/maintenance/Maintenance';
 
@@ -25,6 +26,7 @@ const App = () => {
 						
 						<Route path='/maintenance' element={ <Maintenance /> } />
 					</Routes>
+					<Footer/>
 				</div>
 			</Router>
 		</Provider>
