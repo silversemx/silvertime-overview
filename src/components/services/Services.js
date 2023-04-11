@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 // React Bootstrap
 import { Container } from 'react-bootstrap';
@@ -11,13 +12,24 @@ import ServiceCard from './ServiceCard';
 import StatusModal from './status/StatusModal';
 import Range from './Range';
 
+// Actions
+import { get_all_services } from '../../redux/actions/servicesActions';
+
 // Utils
 import servicesJSON from '../../utils/services.json';
 
 const Services = () => {
+	const dispatch = useDispatch();
+
+	const { all_services } = useSelector(state => state.services);
+
 	const [showModal, setShowModal] = useState(false);
 	const [dateFormat] = useState('DD/MM/YYYY');
 	const [selectedRange, setSelectedRange] = useState([ null, dayjs(dayjs(), dateFormat) ]);
+
+	useEffect(() => {
+		dispatch(get_all_services());
+	}, []);
 
 	const allSystemsStyles = {
 		color: 'white',
@@ -51,7 +63,7 @@ const Services = () => {
 				/>
 			</div>
 
-			{servicesJSON.services.map((service, idx) => (
+			{all_services.services.map((service, idx) => (
 				<ServiceCard
 					key={idx}
 					name={service?.name}
