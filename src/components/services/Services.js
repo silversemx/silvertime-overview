@@ -28,11 +28,16 @@ const Services = () => {
 
 			<h2>Services</h2>
 			<p className='mb-4'>This page is used to display the status of AstraZeneca's services.</p>
-			<Range
-				dateFormat={dateFormat}
-				selectedRange={selectedRange}
-				setSelectedRange={setSelectedRange}
-			/>
+
+			<div style={{ textAlign: 'center', marginBlock: '2rem' }}>
+				<p>Select a date range to view the status of services.</p>
+				<Range
+					dateFormat={dateFormat}
+					selectedRange={selectedRange}
+					setSelectedRange={setSelectedRange}
+				/>
+			</div>
+
 			{servicesJSON.services.map((service, idx) => (
 				<ServiceCard
 					key={idx}
