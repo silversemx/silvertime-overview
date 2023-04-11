@@ -19,6 +19,16 @@ const Services = () => {
 	const [dateFormat] = useState('DD/MM/YYYY');
 	const [selectedRange, setSelectedRange] = useState([ null, dayjs(dayjs(), dateFormat) ]);
 
+	const allSystemsStyles = {
+		color: 'white',
+		// backgroundColor: statusInfo?.status === 'operational' ? '#06c281' : statusInfo?.status === 'warning' ? '#f7d54a' : '#ef4b4c', // maintenance #479be5
+		backgroundColor: '#06c281',
+		borderRadius: '10px',
+		padding: '1rem',
+		marginBottom: '2rem',
+		fontSize: '20px'
+	}
+
 	return (
 		<Container className='custom-container'>
 			<StatusModal
@@ -28,6 +38,9 @@ const Services = () => {
 
 			<h2>Services</h2>
 			<p className='mb-4'>This page is used to display the status of AstraZeneca's services.</p>
+
+			<p style={ allSystemsStyles }>All Services Operational</p>
+			<hr/>
 
 			<div style={{ textAlign: 'center', marginBlock: '2rem' }}>
 				<p>Select a date range to view the status of services.</p>
