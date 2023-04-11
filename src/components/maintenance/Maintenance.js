@@ -8,6 +8,7 @@ import { Card, Container } from 'react-bootstrap';
 // Packages
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import PropTypes from 'prop-types';
 
 // Actions
 import { get_all_maintenances } from '../../redux/actions/maintenancesActions';
@@ -25,10 +26,14 @@ const Post = (props) => {
 					style={{ cursor: 'pointer' }}
 					onClick={() => navigateTo(`/maintenance/${id}/info`)}
 				>
-					{title}
+					{maintenance?.title}
 				</p>
-				<p className='schedule-text text-muted m-0'>From: {new Date(maintenance?.start?.$date).toString('es-MX', { timeZone: 'CST' })}</p>
-				<p className='schedule-text text-muted'>To: {new Date(maintenance?.end?.$date).toString('es-MX', { timeZone: 'CST' })}</p>
+				<p className='schedule-text text-muted m-0'>
+					From: {maintenance?.start !== null ? new Date(maintenance?.start?.$date).toString('es-MX', { timeZone: 'CST' }) : 'Undefined'}
+				</p>
+				<p className='schedule-text text-muted'>
+					To: {maintenance?.end !== null ? new Date(maintenance?.end?.$date).toString('es-MX', { timeZone: 'CST' }) : 'Undefined'}
+				</p>
 				<hr/>
 				<ReactQuill
 					theme='bubble'
@@ -39,6 +44,10 @@ const Post = (props) => {
 			</Card.Body>
 		</Card>
 	);
+}
+
+Post.propTypes = {
+	maintenance: PropTypes.object.isRequired
 }
 
 const Maintenance = () => {
@@ -54,15 +63,27 @@ const Maintenance = () => {
 		<Container className='custom-container'>
 			<h2>Scheduled Maintenance</h2>
 			<p className='mb-4'>This page is used to list the scheduled maintenance to be performed on the services.</p>
-			{all_maintenances.maintenances.map((maintenance, idx) => (
-				<Post
-					key={idx}
-					maintenance={maintenance}
-				/>
-			))}
+			{all_maintenances.maintenances.length > 0 
+				?	all_maintenances.maintenances.map((maintenance, idx) => (
+						<Post
+							key={idx}
+							maintenance={maintenance}
+						/>
+					))
+				: <p className='text-center'>No Scheduled Maintenance</p>
+			}
 
 			<h2>Past Maintenance</h2>
 			<p className='mb-4'>This page is used to list the scheduled maintenance to be performed on the services.</p>
+			{all_maintenances.past.length > 0 
+				?	all_maintenances.past.map((maintenance, idx) => (
+						<Post
+							key={idx}
+							maintenance={maintenance}
+						/>
+					))
+				: <p className='text-center'>No Past Maintenance</p>
+			}
 		</Container>
 	);
 }
