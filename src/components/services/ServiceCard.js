@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 // React Bootstrap
 import { Card, Col, Row } from 'react-bootstrap';
 
 // Packages
+import dayjs from 'dayjs';
+import Axios from 'axios';
 import PropTypes from 'prop-types';
 
 // Components
 import StatusBar from './status/StatusBar';
+
+// Utils
+import create_query_params from '../../utils/create_query_params';
 
 const Status = (props) => {
 	const { status } = props;
@@ -34,6 +39,31 @@ Status.propTypes = {}
 
 const ServiceCard = (props) => {
 	const { serviceInfo, selectedRange, setShowModal } = props;
+
+	const [serviceState, setServiceState] = useState({ data: [] });
+
+	useEffect(() => {
+		requestServiceState();
+	}, [serviceInfo?._id?.$oid, selectedRange]);
+
+	const requestServiceState = () => {
+		const overview_query = {
+			service: serviceInfo?._id?.$oid,
+			start: dayjs(selectedRange[0]).valueOf(),
+			end: dayjs(selectedRange[1]).valueOf()
+		}
+
+		let url = process.env.REACT_APP_SERVER_URL + '/api/state/overview?';
+		let query = create_query_params(overview_query);
+		url += query;
+
+		Axios.get(url)
+		.then((res) => {
+			setServiceState(res.data)
+		}).catch((err) => {
+			console.log('Error', err)
+		})
+	}
 
 	return (
 		<Card className='mb-4'>
@@ -64,6 +94,10 @@ const ServiceCard = (props) => {
 	);
 }
 
-ServiceCard.propTypes = {}
+ServiceCard.propTypes = {
+	serviceInfo: PropTypes.object.isRequired,
+	selectedRange: PropTypes.array.isRequired,
+	setShowModal: PropTypes.func.isRequired
+}
 
 export default ServiceCard;
