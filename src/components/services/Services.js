@@ -22,7 +22,7 @@ const Services = () => {
 
 	const [showModal, setShowModal] = useState(false);
 	const [dateFormat] = useState('DD/MM/YYYY');
-	const [selectedRange, setSelectedRange] = useState([ null, dayjs(dayjs(), dateFormat) ]);
+	const [selectedRange, setSelectedRange] = useState([ dayjs().add(-90, 'd'), dayjs() ]);
 
 	useEffect(() => {
 		dispatch(get_all_services());
