@@ -17,7 +17,7 @@ import StatusBadge from '../utils/StatusBadge';
 import { get_all_maintenances } from '../../redux/actions/maintenancesActions';
 import { getMaintenanceStatusDesc } from '../../utils/getStatusDesc';
 
-const Post = (props) => {
+export const Post = (props) => {
 	const { maintenance } = props;
 
 	const navigateTo = useNavigate();
@@ -63,7 +63,7 @@ Post.propTypes = {
 	maintenance: PropTypes.object.isRequired
 }
 
-const Maintenance = () => {
+export const Maintenance = () => {
 	const dispatch = useDispatch();
 
 	const { all_maintenances } = useSelector(state => state.maintenances);
@@ -100,5 +100,3 @@ const Maintenance = () => {
 		</Container>
 	);
 }
-
-export default Maintenance;

@@ -9,7 +9,7 @@ import Footer from './components/main/Footer';
 import Authentication from './components/main/Authentication';
 import PrivateRoute from './router/PrivateRoute';
 import Services from './components/services/Services';
-import Maintenance from './components/maintenance/Maintenance';
+import { Maintenance } from './components/maintenance/Maintenance';
 
 // Redux
 import { Provider } from 'react-redux';
