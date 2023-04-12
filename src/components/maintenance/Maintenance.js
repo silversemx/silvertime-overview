@@ -3,15 +3,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 // React Bootstrap
-import { Card, Container } from 'react-bootstrap';
+import { Card, Col, Container, Row } from 'react-bootstrap';
 
 // Packages
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import PropTypes from 'prop-types';
 
+// Components
+import StatusBadge from '../utils/StatusBadge';
+
 // Actions
 import { get_all_maintenances } from '../../redux/actions/maintenancesActions';
+import { getMaintenanceStatusDesc } from '../../utils/getStatusDesc';
 
 const Post = (props) => {
 	const { maintenance } = props;
@@ -21,12 +25,19 @@ const Post = (props) => {
 	return (
 		<Card className='mb-5'>
 			<Card.Body>
-				<h4
-					style={{ cursor: 'pointer' }}
-					onClick={() => navigateTo(`/maintenance/${id}/info`)}
-				>
-					{maintenance?.title}
-				</h4>
+				<Row>
+					<Col lg={11} sm={12}>
+						<h4
+							style={{ cursor: 'pointer' }}
+							onClick={() => navigateTo(`/maintenance/${id}/info`)}
+						>
+							{maintenance?.title}
+						</h4>
+					</Col>
+					<Col lg={1} sm={12}>
+						<StatusBadge status={getMaintenanceStatusDesc(maintenance?.status)} />
+					</Col>
+				</Row>
 				{maintenance?.service && 
 					<p><b>Service:</b> {maintenance?.service?.name}</p>
 				}
