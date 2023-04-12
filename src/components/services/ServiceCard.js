@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 // React Bootstrap
 import { Card, Col, Row } from 'react-bootstrap';
@@ -45,6 +46,8 @@ Status.propTypes = {}
 
 const ServiceCard = (props) => {
 	const { serviceInfo, selectedRange, setShowModal } = props;
+
+	const navigateTo = useNavigate();
 
 	const dispatch = useDispatch();
 
@@ -95,10 +98,7 @@ const ServiceCard = (props) => {
 					{serviceState?.data.map((state, idx) => (
 						<div 
 							key={idx}
-							onClick={() => {
-								dispatch(save_service_state(state));
-								setShowModal();
-							}}
+							onClick={() => navigateTo(`/service/${serviceInfo?._id?.$oid}/status/${state?.date?.$date}`)}
 						>
 							<StatusBar serviceState={state} />
 						</div>
