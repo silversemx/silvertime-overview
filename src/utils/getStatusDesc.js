@@ -38,7 +38,66 @@ const getExecutionScopeDesc = (status) => {
 	return desc;
 }
 
+// REPORT_STATUS_NONE = 0
+// REPORT_STATUS_CREATED = 1
+// REPORT_STATUS_VIEWED = 2
+// REPORT_STATUS_REMOVED = 3
+const geReportStatusDesc = (status) => {
+	let desc = '';
+
+	switch (parseInt(status)) {
+		case 0:		desc = 'None';					break;
+		case 1:		desc = 'Created';				break;
+		case 2:		desc = 'Viewed';				break;
+		case 3:		desc = 'Removed';				break;
+		default:	desc = 'None';					break;
+	}
+
+	return desc;
+}
+
+// REPORT_PRIORITY_NONE = 0
+// REPORT_PRIORITY_ZERO = 1
+// REPORT_PRIORITY_ONE = 2
+// REPORT_PRIORITY_TWO = 3
+// REPORT_PRIORITY_THREE = 4
+const geReportPriorityDesc = (status) => {
+	let desc = '';
+
+	switch (parseInt(status)) {
+		case 0:		desc = 'None';		break;
+		case 1:		desc = 'Zero';		break;
+		case 2:		desc = 'One';			break;
+		case 3:		desc = 'Two';			break;
+		case 4:		desc = 'Three';		break;
+		default:	desc = 'None';		break;
+	}
+
+	return desc;
+}
+
+// REPORT_TYPE_NONE = 0
+// REPORT_TYPE_INTERNAL = 1
+// REPORT_TYPE_EXTERNAL = 2
+// REPORT_TYPE_OTHER = 3
+const geReportTypeDesc = (status) => {
+	let desc = '';
+
+	switch (parseInt(status)) {
+		case 0:		desc = 'None';					break;
+		case 1:		desc = 'Internal';			break;
+		case 2:		desc = 'External';			break;
+		case 3:		desc = 'Other';					break;
+		default:	desc = 'None';					break;
+	}
+
+	return desc;
+}
+
 export { 
 	getMaintenanceStatusDesc,
 	getExecutionScopeDesc,
+	geReportStatusDesc,
+	geReportPriorityDesc,
+	geReportTypeDesc
 };
