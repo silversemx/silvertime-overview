@@ -15,12 +15,25 @@ import StatusBadge from '../utils/StatusBadge';
 
 // Actions
 import { get_all_maintenances } from '../../redux/actions/maintenancesActions';
+import { get_user_info } from '../../redux/actions/authActions';
+
+// Utils
 import { getMaintenanceStatusDesc } from '../../utils/getStatusDesc';
 
 export const Post = (props) => {
 	const { maintenance } = props;
 
+	const dispatch = useDispatch();
+
 	const navigateTo = useNavigate();
+
+	const { user_info } = useSelector(state => state.auth);
+
+	useEffect(() => {
+		if (maintenance?.user?.$oid) {
+			dispatch(get_user_info(maintenance?.user?.$oid));
+		}
+	}, [maintenance]);
 
 	return (
 		<Card className='mb-5'>
@@ -53,7 +66,8 @@ export const Post = (props) => {
 					readOnly={true}
 					value={maintenance?.text && JSON.parse(maintenance?.text)}
 				/>
-				<p className='schedule-text text-muted text-end'>Posted on: {new Date(maintenance?.date?.$date).toString('es-MX', { timeZone: 'CST' })}</p>
+				<p className='schedule-text text-muted text-end m-0'>Posted on: {new Date(maintenance?.date?.$date).toString('es-MX', { timeZone: 'CST' })}</p>
+				<p className='schedule-text text-muted text-end'>Posted by: {user_info?.first_name + ' ' + user_info?.last_name}</p>
 			</Card.Body>
 		</Card>
 	);

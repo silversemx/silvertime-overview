@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 // React Bootstrap
@@ -14,12 +15,23 @@ import PropTypes from 'prop-types';
 import StatusBadge from '../utils/StatusBadge';
 
 // Actions
+import { get_user_info } from '../../redux/actions/authActions';
 import { geInterruptionStatusDesc } from '../../utils/getStatusDesc';
 
 const Interruption = (props) => {
 	const { interruption } = props;
 
+	const dispatch = useDispatch();
+
 	const navigateTo = useNavigate();
+
+	const { user_info } = useSelector(state => state.auth);
+
+	useEffect(() => {
+		if (interruption?.user?.$oid) {
+			dispatch(get_user_info(interruption?.user?.$oid));
+		}
+	}, [interruption]);
 
 	const getDuration = (start, end) => {
 		let diff = dayjs(end).diff(dayjs(start), 'second');
@@ -92,8 +104,8 @@ const Interruption = (props) => {
 						/>
 					:	<p>No description.</p>
 				}
-				<p className='schedule-text text-muted text-end'>Posted on: {new Date(interruption?.date?.$date).toString('es-MX', { timeZone: 'CST' })}</p>
-				{/* TODO: hacer requets a user info para obtener posted by */}
+				<p className='schedule-text text-muted text-end m-0'>Posted on: {new Date(interruption?.date?.$date).toString('es-MX', { timeZone: 'CST' })}</p>
+				<p className='schedule-text text-muted text-end'>Posted by: {user_info?.first_name + ' ' + user_info?.last_name}</p>
 			</Card.Body>
 		</Card>
 	);
