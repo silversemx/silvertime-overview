@@ -4,13 +4,16 @@ import {
 	ALL_SERVICES_GET,
 	ALL_SERVICES_GET_ERROR,
 	SERVICE_INFO_GET,
-	SERVICE_INFO_ERROR
+	SERVICE_INFO_ERROR,
+	ALL_SERVICE_INSTANCES_GET,
+	ALL_SERVICE_INSTANCES_GET_ERROR
 } from '../types';
 
 const initialState = {
 	services_loading: false,
 	all_services: { count: 0, services: [] },
 	service_info: {},
+	service_instances: { count: 0, instances: [] },
 	services_errors: {}
 }
 
@@ -40,6 +43,15 @@ export default function servicesReducer(state = initialState, action){
 			return {
 				...state,
 				service_info: action.payload
+			}
+		case ALL_SERVICE_INSTANCES_GET:
+			delete state.services_errors.all_service_instance
+			return {
+				...state,
+				service_instances: {
+					count: action.payload.count,
+					instances: action.payload.instances.sort((a, b) => a.name.localeCompare(b.name))
+				}
 			}
 		case ALL_SERVICES_GET_ERROR:
 		case SERVICE_INFO_ERROR:
