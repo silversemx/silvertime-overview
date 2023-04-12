@@ -21,13 +21,15 @@ const Post = (props) => {
 	return (
 		<Card className='mb-5'>
 			<Card.Body>
-				<p
-					className='fs-4 m-0'
+				<h4
 					style={{ cursor: 'pointer' }}
 					onClick={() => navigateTo(`/maintenance/${id}/info`)}
 				>
 					{maintenance?.title}
-				</p>
+				</h4>
+				{maintenance?.service && 
+					<p><b>Service:</b> {maintenance?.service?.name}</p>
+				}
 				<p className='schedule-text text-muted m-0'>
 					From: {maintenance?.start !== null ? new Date(maintenance?.start?.$date).toString('es-MX', { timeZone: 'CST' }) : 'Undefined'}
 				</p>
