@@ -9,6 +9,7 @@ import Footer from './components/main/Footer';
 import Authentication from './components/main/Authentication';
 import PrivateRoute from './router/PrivateRoute';
 import Services from './components/services/Services';
+import StatusInfo from './components/services/status/StatusInfo';
 import { Maintenance } from './components/maintenance/Maintenance';
 import MaintenanceInfo from './components/maintenance/MaintenanceInfo';
 import Reports from './components/reports/Reports';
@@ -34,6 +35,8 @@ const App = () => {
 							<Route path='/' element={ <Navigate to='/services' /> } />
 							
 							<Route path='/services' element={ <Services /> } />
+
+							<Route path='/service/:service_id/status/:date' element={ <StatusInfo /> } />
 							
 							<Route path='/maintenance' element={ <Maintenance /> } />
 							<Route path='/maintenance/:maintenance_id/info' element={ <MaintenanceInfo /> } />
