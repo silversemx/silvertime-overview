@@ -12,6 +12,7 @@ import Services from './components/services/Services';
 import StatusInfo from './components/services/status/StatusInfo';
 import { Maintenance } from './components/maintenance/Maintenance';
 import MaintenanceInfo from './components/maintenance/MaintenanceInfo';
+import InterruptionInfo from './components/interruptions/InterruptionInfo';
 import Reports from './components/reports/Reports';
 
 // Redux
@@ -40,7 +41,8 @@ const App = () => {
 							
 							<Route path='/maintenance' element={ <Maintenance /> } />
 							<Route path='/maintenance/:maintenance_id/info' element={ <MaintenanceInfo /> } />
-							
+
+							<Route path='/interruption/:interruption_id/info' element={ <InterruptionInfo /> } />
 							<Route path='/reports' element={ <Reports /> } />
 						</Route>
 					</Routes>

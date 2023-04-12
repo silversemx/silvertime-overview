@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // React Bootstrap
 import { Card, Col, Row } from 'react-bootstrap';
@@ -17,6 +18,8 @@ import { geInterruptionStatusDesc } from '../../utils/getStatusDesc';
 const Interruption = (props) => {
 	const { interruption } = props;
 
+	const navigateTo = useNavigate();
+
 	return (
 		<Card className='mb-5'>
 			<Card.Body>
@@ -24,7 +27,7 @@ const Interruption = (props) => {
 					<Col lg={11} sm={12}>
 						<h4
 							style={{ cursor: 'pointer' }}
-							// onClick={() => navigateTo(`/interruption/${interruption?._id?.$oid}/info`)}
+							onClick={() => navigateTo(`/interruption/${interruption?._id?.$oid}/info`)}
 						>
 							{interruption?.title}
 						</h4>
