@@ -72,7 +72,7 @@ const ServiceCard = (props) => {
 	}
 
 	return (
-		<Card className='mb-4'>
+		<Card className='mb-4' style={{ width: '1030px'}}>
 			<Card.Body>
 				<Row>
 					<Col lg={10}>
