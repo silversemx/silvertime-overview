@@ -123,3 +123,9 @@ html, body, #root, .App {
 .ql-editor {
 	padding: 0 !important;
 }
+
+/*** modal ***/
+
+.modal-content {
+	background-color: #EFF4FF !important;
+}
