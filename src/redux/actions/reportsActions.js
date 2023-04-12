@@ -21,7 +21,7 @@ export const create_report = (reportInfo) => dispatch => {
 	}
 
 	formData.append('type', reportInfo.type);
-	formData.append('text', reportInfo.text);
+	formData.append('text', JSON.stringify(reportInfo.text));
 	formData.append('image', reportInfo.image);
 
 	Axios.post(url, formData, {

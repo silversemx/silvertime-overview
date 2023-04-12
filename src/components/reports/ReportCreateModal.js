@@ -34,6 +34,7 @@ const ReportCreateModal = (props) => {
 	}, [report.service]);
 
 	const closeModalRef = useRef();
+	const quillEditorRef = useRef();
 	const fileInputRef = useRef();
 
 	const closeModal = () => {
@@ -44,6 +45,11 @@ const ReportCreateModal = (props) => {
 	const handleFileInput = () => {
 		fileInputRef.current?.files &&
 			setReport({ ...report, image: fileInputRef.current.files[0] });
+	}
+
+	const onChangeEditor = () => {
+		const delta = quillEditorRef.current.getEditor().getContents();
+		setReport({ ...report, text: delta });
 	}
 
 	const createReport = () => {
@@ -109,8 +115,8 @@ const ReportCreateModal = (props) => {
 							<SelectButton
 								options={service_instances?.instances}
 								name='service'
-								value={report.instances}
-								onChange={(e) => setReport({ ...report, instances: e !== null ? e.value : '' })}
+								value={report.instance}
+								onChange={(e) => setReport({ ...report, instance: e !== null ? e.value : '' })}
 							/>
 						</Container>
 					}
@@ -131,8 +137,9 @@ const ReportCreateModal = (props) => {
 						<p className='mb-2'>Text</p>
 						<ReactQuill
 							theme='snow'
+							ref={quillEditorRef}
 							value={report.text}
-							onChange={(e) => setReport({ ...report, text: e })}
+							onChange={onChangeEditor}
 							readOnly={false}
 							preserveWhitespace
 							style={{ height: '130px' }}
