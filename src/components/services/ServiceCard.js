@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 // React Bootstrap
 import { Card, Col, Row } from 'react-bootstrap';
@@ -10,6 +11,9 @@ import PropTypes from 'prop-types';
 
 // Components
 import StatusBar from './status/StatusBar';
+
+// Actions
+import { save_service_state } from '../../redux/actions/stateActions';
 
 // Utils
 import create_query_params from '../../utils/create_query_params';
@@ -39,6 +43,8 @@ Status.propTypes = {}
 
 const ServiceCard = (props) => {
 	const { serviceInfo, selectedRange, setShowModal } = props;
+
+	const dispatch = useDispatch();
 
 	const [serviceState, setServiceState] = useState({ data: [] });
 
@@ -80,12 +86,15 @@ const ServiceCard = (props) => {
 				</Row>
 				<Card.Subtitle className='mb-2 text-muted'>{serviceInfo?.description}</Card.Subtitle>
 				<div className='d-flex align-items-end'>
-					{serviceState?.data.map((info, idx) => (
+					{serviceState?.data.map((state, idx) => (
 						<div 
 							key={idx}
-							onClick={() => setShowModal()}
+							onClick={() => {
+								dispatch(save_service_state(state));
+								setShowModal();
+							}}
 						>
-							<StatusBar statusInfo={info} />
+							<StatusBar serviceState={state} />
 						</div>
 					))}
 				</div>
