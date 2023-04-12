@@ -15,9 +15,6 @@ import Range from './Range';
 // Actions
 import { get_all_services } from '../../redux/actions/servicesActions';
 
-// Utils
-import servicesJSON from '../../utils/services.json';
-
 const Services = () => {
 	const dispatch = useDispatch();
 
