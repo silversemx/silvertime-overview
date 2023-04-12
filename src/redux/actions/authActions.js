@@ -3,7 +3,9 @@ import Cookies from 'universal-cookie';
 import jwt_decode from 'jwt-decode';
 
 import {
-	SET_CURRENT_USER
+	SET_CURRENT_USER,
+	USER_INFO_GET,
+	USER_INFO_GET_ERROR
 } from '../types';
 
 import isEmpty from '../../utils/isEmpty';
@@ -70,3 +72,21 @@ const auth_token_set = token => {
 	if (token) Axios.defaults.headers.common['Authorization'] = token;
 	else delete Axios.defaults.headers.common['Authorization'];
 };
+
+
+export const get_user_info = (user_id) => dispatch => {
+	let url = process.env.REACT_APP_SERVER_URL + `/api/users/${user_id}/info`;
+
+	Axios.get(url)
+	.then((res) => {
+		dispatch({
+			type: USER_INFO_GET,
+			payload: res.data
+		});
+	}).catch((err) => {
+		dispatch({
+			type: USER_INFO_GET_ERROR,
+			payload: { type: 'user_info', msg: err.message }
+		});
+	})
+}
