@@ -11,25 +11,41 @@ import 'react-quill/dist/quill.snow.css';
 
 // Components
 import Interruption from './Interruption';
+import StatusHistory from '../utils/StatusHistory';
 
 // Actions
-import { get_interruption_info } from '../../redux/actions/interruptionsActions';
+import { get_interruption_info, get_interruption_status_history } from '../../redux/actions/interruptionsActions';
 
 const InterruptionInfo = () => {
 	const { interruption_id } = useParams();
 
 	const dispatch = useDispatch();
 
-	const { interruption_info } = useSelector(state => state.interruptions);
+	const { interruption_info, interruption_status_history } = useSelector(state => state.interruptions);
 
 	useEffect(() => {
 		dispatch(get_interruption_info(interruption_id));
+		dispatch(get_interruption_status_history(interruption_id));
 	}, []);
 
 	return (
 		<Container className='custom-container'>
 			<h2 className='text-center mb-3'>Interruption Information</h2>
 			<Interruption interruption={interruption_info} />
+
+			<h4 className='text-center mb-3'>Interruption Status History</h4>
+			<Card className='text-center p-2 mb-5'>
+				<Card.Body>
+					{interruption_status_history.map((history, idx) => (
+						<div key={idx}>
+							<StatusHistory
+								historyData={history}
+							/>
+							{idx !== interruption_status_history?.length - 1 && <hr />}
+						</div>
+					))}
+				</Card.Body>
+			</Card>
 
 			{interruption_info?.solution &&
 				<div>
