@@ -10,6 +10,7 @@ import Authentication from './components/main/Authentication';
 import PrivateRoute from './router/PrivateRoute';
 import Services from './components/services/Services';
 import { Maintenance } from './components/maintenance/Maintenance';
+import MaintenanceInfo from './components/maintenance/MaintenanceInfo';
 
 // Redux
 import { Provider } from 'react-redux';
@@ -34,6 +35,7 @@ const App = () => {
 							<Route path='/services' element={ <Services /> } />
 							
 							<Route path='/maintenance' element={ <Maintenance /> } />
+							<Route path='/maintenance/:maintenance_id/info' element={ <MaintenanceInfo /> } />
 						</Route>
 					</Routes>
 					<Footer/>

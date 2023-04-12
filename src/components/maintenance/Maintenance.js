@@ -29,7 +29,7 @@ export const Post = (props) => {
 					<Col lg={11} sm={12}>
 						<h4
 							style={{ cursor: 'pointer' }}
-							onClick={() => navigateTo(`/maintenance/${id}/info`)}
+							onClick={() => navigateTo(`/maintenance/${maintenance?._id?.$oid}/info`)}
 						>
 							{maintenance?.title}
 						</h4>
@@ -51,7 +51,7 @@ export const Post = (props) => {
 				<ReactQuill
 					theme='bubble'
 					readOnly={true}
-					value={JSON.parse(maintenance?.text)}
+					value={maintenance?.text && JSON.parse(maintenance?.text)}
 				/>
 				<p className='schedule-text text-muted text-end'>Posted on: {new Date(maintenance?.date?.$date).toString('es-MX', { timeZone: 'CST' })}</p>
 			</Card.Body>
