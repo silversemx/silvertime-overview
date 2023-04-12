@@ -53,7 +53,7 @@ const ReportCreateModal = (props) => {
 	}
 
 	const createReport = () => {
-		dispatch(create_report(report));
+		dispatch(create_report(report, closeModalRef));
 	}
 
 	return (

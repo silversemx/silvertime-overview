@@ -5,7 +5,7 @@ import {
 	CREATE_REPORT_ERROR
 } from '../types';
 
-export const create_report = (reportInfo) => dispatch => {
+export const create_report = (reportInfo, closeModalRef) => dispatch => {
 	let url = process.env.REACT_APP_SERVER_URL + '/api/state/reports/create';
 
 	const formData = new FormData();
@@ -34,6 +34,10 @@ export const create_report = (reportInfo) => dispatch => {
 			type: CREATE_REPORT_SUCCES,
 			payload: res.data
 		});
+
+		setTimeout(() => {
+			closeModalRef.current.click();
+		}, 1300);
 	}).catch((err) => {
 		dispatch({
 			type: CREATE_REPORT_ERROR,
