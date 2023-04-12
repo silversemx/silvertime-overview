@@ -61,9 +61,8 @@ const Services = () => {
 			</div>
 
 			{all_services.services.map((service, idx) => (
-				<div className='d-flex justify-content-center'>
+				<div className='d-flex justify-content-center' key={idx}>
 					<ServiceCard
-						key={idx}
 						serviceInfo={service}
 						selectedRange={selectedRange}
 						setShowModal={() => setShowModal(true)}
