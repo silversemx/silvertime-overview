@@ -1,6 +1,8 @@
 import {
 	INTERRUPTION_INFO_GET,
-	INTERRUPTION_INFO_GET_ERROR
+	INTERRUPTION_INFO_GET_ERROR,
+	INTERRUPTION_STATUS_HISTORY_GET,
+	INTERRUPTION_STATUS_HISTORY_GET_ERROR
 } from '../types';
 
 const initialState = {
@@ -17,7 +19,14 @@ export default function interruptionsReducer(state = initialState, action){
 				...state,
 				interruption_info: action.payload
 			}
+		case INTERRUPTION_STATUS_HISTORY_GET:
+			delete state.interruptions_errors.interruption_status_history
+			return {
+				...state,
+				interruption_status_history: action.payload
+			}
 		case INTERRUPTION_INFO_GET_ERROR:
+		case INTERRUPTION_STATUS_HISTORY_GET_ERROR:
 			return {
 				...state,
 				interruptions_errors: {
