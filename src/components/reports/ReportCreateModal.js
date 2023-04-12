@@ -15,6 +15,9 @@ import SelectButton from '../utils/SelectButton';
 import { get_all_services, get_all_service_instance } from '../../redux/actions/servicesActions';
 import { create_report } from '../../redux/actions/reportsActions';
 
+// Utils
+import { geReportPriorityDesc, getExecutionScopeDesc, geReportTypeDesc } from '../../utils/getStatusDesc';
+
 const ReportCreateModal = (props) => {
 	const { show, onHide } = props;
 
@@ -75,10 +78,10 @@ const ReportCreateModal = (props) => {
 						<p className='mb-2'>Priority</p>
 						<SelectButton
 							options={[
-								{ name: 'Zero', value: 1 },
-								{ name: 'One', value: 2 },
-								{ name: 'Two', value: 3 },
-								{ name: 'Three', value: 4 }
+								{ name: geReportPriorityDesc(1), value: 1 },
+								{ name: geReportPriorityDesc(2), value: 2 },
+								{ name: geReportPriorityDesc(3), value: 3 },
+								{ name: geReportPriorityDesc(4), value: 4 }
 							]}
 							name='priority'
 							value={report.priority}
@@ -89,9 +92,9 @@ const ReportCreateModal = (props) => {
 						<p className='mb-2'>Scope</p>
 						<SelectButton
 							options={[
-								{ name: 'Global', value: 1 },
-								{ name: 'Service', value: 2 },
-								{ name: 'Instance', value: 3 }
+								{ name: getExecutionScopeDesc(1), value: 1 },
+								{ name: getExecutionScopeDesc(2), value: 2 },
+								{ name: getExecutionScopeDesc(3), value: 3 }
 							]}
 							name='scope'
 							value={report.scope}
@@ -124,9 +127,9 @@ const ReportCreateModal = (props) => {
 						<p className='mb-2'>Type</p>
 						<SelectButton
 							options={[
-								{ name: 'Internal', value: 1 },
-								{ name: 'External', value: 2 },
-								{ name: 'Other', value: 3 }
+								{ name: geReportTypeDesc(1), value: 1 },
+								{ name: geReportTypeDesc(2), value: 2 },
+								{ name: geReportTypeDesc(3), value: 3 }
 							]}
 							name='type'
 							value={report.type}
