@@ -44,7 +44,7 @@ const setStatusBadgeColor = (status) => {
 		case 'Progress':
 			bgColor = '#3f51b5'; textColor = 'white';
 		break;
-		case 'Good':
+		case 'Done':
 			bgColor = '#198754'; textColor = 'white';
 		break;
 		case 'Incomplete':
