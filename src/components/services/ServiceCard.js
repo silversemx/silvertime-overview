@@ -5,6 +5,8 @@ import { useDispatch } from 'react-redux';
 import { Card, Col, Row } from 'react-bootstrap';
 
 // Packages
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 import dayjs from 'dayjs';
 import Axios from 'axios';
 import PropTypes from 'prop-types';
@@ -84,7 +86,11 @@ const ServiceCard = (props) => {
 						<Status status={status} />
 					</Col> */}
 				</Row>
-				<Card.Subtitle className='mb-2 text-muted'>{serviceInfo?.description}</Card.Subtitle>
+				<ReactQuill
+					theme='bubble'
+					readOnly={true}
+					value={JSON.parse(serviceInfo?.description)}
+				/>
 				<div className='d-flex align-items-end'>
 					{serviceState?.data.map((state, idx) => (
 						<div 
