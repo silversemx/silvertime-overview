@@ -38,7 +38,7 @@ export const Post = (props) => {
 						<StatusBadge status={getMaintenanceStatusDesc(maintenance?.status)} />
 					</Col>
 				</Row>
-				{maintenance?.service && 
+				{maintenance?.service?.name && 
 					<p><b>Service:</b> {maintenance?.service?.name}</p>
 				}
 				<p className='schedule-text text-muted m-0'>
