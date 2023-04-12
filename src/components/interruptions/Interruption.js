@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Card, Col, Row } from 'react-bootstrap';
 
 // Packages
+import dayjs from 'dayjs';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import PropTypes from 'prop-types';
@@ -19,6 +20,30 @@ const Interruption = (props) => {
 	const { interruption } = props;
 
 	const navigateTo = useNavigate();
+
+	const getDuration = (start, end) => {
+		let diff = dayjs(end).diff(dayjs(start), 'second');
+		let unit = ' secs.';
+
+		if (diff > 60) {
+			diff = dayjs(end).diff(dayjs(start), 'minute');
+			unit = ' mins.';
+
+			if (diff > 60) {
+				diff = dayjs(end).diff(dayjs(start), 'hours');
+				unit = ' hrs.';
+
+				if (diff > 60) {
+					diff = dayjs(end).diff(dayjs(start), 'day');
+					unit = ' days.';
+				}
+			}
+		}
+
+		let duration = diff + unit;
+
+		return duration;
+	}
 
 	return (
 		<Card className='mb-5'>
@@ -39,12 +64,25 @@ const Interruption = (props) => {
 				{interruption?.service?.name && 
 					<p><b>Service:</b> {interruption?.service?.name}</p>
 				}
-				<p className='schedule-text text-muted m-0'>
-					From: {interruption?.start !== null ? new Date(interruption?.start?.$date).toString('es-MX', { timeZone: 'CST' }) : 'Undefined'}
-				</p>
-				<p className='schedule-text text-muted'>
-					To: {interruption?.end !== null ? new Date(interruption?.end?.$date).toString('es-MX', { timeZone: 'CST' }) : 'Undefined'}
-				</p>
+				<Row>
+					<Col>
+						<p className='schedule-text text-muted m-0'>
+							From: {interruption?.start !== null ? new Date(interruption?.start?.$date).toString('es-MX', { timeZone: 'CST' }) : 'Undefined'}
+						</p>
+						<p className='schedule-text text-muted'>
+							To: {interruption?.end !== null ? new Date(interruption?.end?.$date).toString('es-MX', { timeZone: 'CST' }) : 'Undefined'}
+						</p>
+					</Col>
+					<Col>
+						<p className='schedule-text text-muted m-0'>
+							Duration: &nbsp;
+							{interruption?.start !== null && interruption?.end !== null
+								?	getDuration(interruption?.start?.$date, interruption?.end?.$date)
+								:	'Undefined'
+							}
+						</p>
+					</Col>
+				</Row>
 				<hr/>
 				{interruption?.description
 					?	<ReactQuill
