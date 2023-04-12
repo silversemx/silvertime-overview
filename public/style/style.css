@@ -118,6 +118,12 @@ html, body, #root, .App {
 	box-shadow: none !important;
 }
 
+.btn-submit {
+	background-color: #012236 !important;
+	border-color: #012236 !important;
+	color: white !important;
+}
+
 /*** react-quill ***/
 
 .ql-editor {
@@ -125,7 +131,7 @@ html, body, #root, .App {
 }
 
 .ql-editor :is(p, li) {
-  font-size: 16px !important;
+	font-size: 16px !important;
 }
 
 /*** modal ***/
@@ -138,4 +144,20 @@ html, body, #root, .App {
 
 .badge {
 	align-items: center !important;
+}
+
+/*** reports ***/
+
+.wrapper-container {
+	display: grid;
+}
+
+.title {
+	grid-column: 1 / 3;
+	grid-row: 1;
+}
+
+.icons-btns {
+	grid-column: 2 / 3;
+	grid-row: 1;
 }

@@ -11,6 +11,7 @@ import PrivateRoute from './router/PrivateRoute';
 import Services from './components/services/Services';
 import { Maintenance } from './components/maintenance/Maintenance';
 import MaintenanceInfo from './components/maintenance/MaintenanceInfo';
+import Reports from './components/reports/Reports';
 
 // Redux
 import { Provider } from 'react-redux';
@@ -36,6 +37,8 @@ const App = () => {
 							
 							<Route path='/maintenance' element={ <Maintenance /> } />
 							<Route path='/maintenance/:maintenance_id/info' element={ <MaintenanceInfo /> } />
+							
+							<Route path='/reports' element={ <Reports /> } />
 						</Route>
 					</Routes>
 					<Footer/>
