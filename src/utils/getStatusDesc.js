@@ -94,10 +94,34 @@ const geReportTypeDesc = (status) => {
 	return desc;
 }
 
+
+// INTERRUPTION_STATUS_NONE = 0
+// INTERRUPTION_STATUS_DETECTED = 1
+// INTERRUPTION_STATUS_INVESTIGATING = 2
+// INTERRUPTION_STATUS_MONITORING = 3
+// INTERRUPTION_STATUS_SOLVED = 4
+// INTERRUPTION_STATUS_REMOVED = 5
+const geInterruptionStatusDesc = (status) => {
+	let desc = '';
+
+	switch (parseInt(status)) {
+		case 0:		desc = 'None';						break;
+		case 1:		desc = 'Detected';				break;
+		case 2:		desc = 'Investigating';		break;
+		case 3:		desc = 'Monitoring';			break;
+		case 4:		desc = 'Solved';					break;
+		case 5:		desc = 'Removed';					break;
+		default:	desc = 'None';						break;
+	}
+
+	return desc;
+}
+
 export { 
 	getMaintenanceStatusDesc,
 	getExecutionScopeDesc,
 	geReportStatusDesc,
 	geReportPriorityDesc,
-	geReportTypeDesc
+	geReportTypeDesc,
+	geInterruptionStatusDesc
 };
