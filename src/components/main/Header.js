@@ -1,11 +1,22 @@
 import React, { Fragment } from 'react';
+import { useDispatch } from 'react-redux';
 import { useLocation } from "react-router-dom";
 
 // React Bootstrap
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 
+// Actions
+import { auth_token_remove } from '../../redux/actions/authActions';
+
 const Header = () => {
+	const dispatch = useDispatch();
+
 	let location = useLocation();
+
+	const handleLogout = (e) => {
+		e.preventDefault();
+		dispatch(auth_token_remove());
+	}
 	
 	return (
 		<Navbar className='header' expand='lg'>
@@ -38,7 +49,7 @@ const Header = () => {
 								<i className='bi bi-grid me-2'></i>Return to menu
 							</NavDropdown.Item>
 							<NavDropdown.Divider />
-							<NavDropdown.Item>
+							<NavDropdown.Item onClick={(e) => handleLogout(e)}>
 								<i className='bi bi-box-arrow-right me-2'></i>Log Out
 							</NavDropdown.Item>
 						</NavDropdown>

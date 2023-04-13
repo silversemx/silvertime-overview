@@ -37,6 +37,7 @@ export const auth_token_remove = () => dispatch => {
 	
 	// remove auth header for future requests
 	localStorage.clear();
+	sessionStorage.clear();
 	window.location.href = process.env.REACT_APP_LOGIN;
 	auth_token_set (null);
 	dispatch (user_set_current ({}));
