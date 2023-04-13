@@ -71,11 +71,10 @@ const StatusInfo = () => {
 					{serviceState?.instances?.length > 0
 						?	<Fragment>
 								{serviceState?.instances.map((instance, idx) => (
-									<Card key={idx} className='mb-3'>
-										<Card.Body>
-											<p>{instance?.title}</p>
-										</Card.Body>
-									</Card>
+									<Interruption
+										key={idx}
+										interruption={instance}
+									/>
 								))}
 							</Fragment>
 						: <p>No instances interruptions this day.</p>
