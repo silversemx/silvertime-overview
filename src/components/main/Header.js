@@ -45,7 +45,7 @@ const Header = () => {
 							<NavDropdown.Item>
 								<i className='bi bi-person-circle me-2'></i>Account
 							</NavDropdown.Item>
-							<NavDropdown.Item>
+							<NavDropdown.Item href={process.env.REACT_APP_LOGIN + '/apps'}>
 								<i className='bi bi-grid me-2'></i>Return to menu
 							</NavDropdown.Item>
 							<NavDropdown.Divider />
