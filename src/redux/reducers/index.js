@@ -6,6 +6,7 @@ import servicesReducer from './servicesReducer';
 import stateReducer from './stateReducer';
 import maintenancesReducer from './maintenancesReducer';
 import interruptionsReducer from './interruptionsReducer';
+import reportsReducer from './reportsReducer';
 
 export default combineReducers ({
 	auth: authReducer,
@@ -13,4 +14,5 @@ export default combineReducers ({
 	state: stateReducer,
 	maintenances: maintenancesReducer,
 	interruptions: interruptionsReducer,
+	reports: reportsReducer
 });

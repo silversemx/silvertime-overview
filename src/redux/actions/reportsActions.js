@@ -2,7 +2,9 @@ import Axios from 'axios';
 
 import {
 	CREATE_REPORT_SUCCES,
-	CREATE_REPORT_ERROR
+	CREATE_REPORT_ERROR,
+	ALL_REPORTS_GET,
+	ALL_REPORTS_GET_ERROR
 } from '../types';
 
 export const create_report = (reportInfo, closeModalRef) => dispatch => {
@@ -38,11 +40,29 @@ export const create_report = (reportInfo, closeModalRef) => dispatch => {
 
 		setTimeout(() => {
 			closeModalRef.current.click();
-		}, 1300);
+			dispatch(get_all_reports());
+		}, 1000);
 	}).catch((err) => {
 		dispatch({
 			type: CREATE_REPORT_ERROR,
 			payload: { type: 'create_report', msg: err.message }
+		});
+	})
+}
+
+export const get_all_reports = () => dispatch => {
+	let url = process.env.REACT_APP_SERVER_URL + '/api/state/reports?skip=0&limit=0';
+
+	Axios.get(url)
+	.then((res) => {
+		dispatch({
+			type: ALL_REPORTS_GET,
+			payload: res.data
+		});
+	}).catch((err) => {
+		dispatch({
+			type: ALL_REPORTS_GET_ERROR,
+			payload: { type: 'all_reports', msg: err.message }
 		});
 	})
 }
