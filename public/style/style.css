@@ -165,3 +165,12 @@ html, body, #root, .App {
 	grid-column: 2 / 3;
 	grid-row: 1;
 }
+
+/*** image ***/
+
+.report-img {
+	display: flex;
+	justify-content: center;
+	height: 35vh;
+	margin-bottom: 20px;
+}
