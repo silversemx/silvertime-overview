@@ -7,12 +7,18 @@ import { OverlayTrigger, Popover } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 const StatusBar = (props) => {
-	const { statusInfo } = props;
+	const { serviceState } = props;
 
 	const statusBarStyles = {
 		height: '35px',
 		width: '6px',
-		backgroundColor: statusInfo?.status === 'operational' ? '#06c281' : statusInfo?.status === 'warning' ? '#f7d54a' : '#ef4b4c',
+		backgroundColor: serviceState?.instances.length === 0 && serviceState?.interruptions.length === 0 && serviceState?.maintenance.length === 0 
+											?	'#06c281' // green
+											:	serviceState?.instances.length !== 0 && serviceState?.interruptions.length === 0 && serviceState?.maintenance.length === 0 
+												?	'#f7d54a' // ambar
+												:	serviceState?.instances.length === 0 && serviceState?.interruptions.length === 0 && serviceState?.maintenance.length !== 0 
+													?	'#479be5' // blue
+													:	serviceState?.interruptions.length > 0 ? '#ef4b4c' : 'none', // red
 		borderRadius: '5px',
 		marginRight: '5px',
 		cursor: 'pointer'
@@ -24,8 +30,15 @@ const StatusBar = (props) => {
 			overlay={
 				<Popover id='popover-basic'>
 					<Popover.Body>
-						<p className='schedule-text text-muted'>{new Date(statusInfo?.date).toString('es-MX', { timeZone: 'CST' })}</p>
-						<p className='mb-0'>{statusInfo?.description}</p>
+						<p className='schedule-text text-muted'>{new Intl.DateTimeFormat('en-US').format(serviceState?.date?.$date)}</p>
+						{serviceState?.instances.length === 0 && serviceState?.interruptions.length === 0 && serviceState?.maintenance.length === 0 
+							?	<p>Service available.</p> 
+							:	serviceState?.instances.length !== 0 && serviceState?.interruptions.length === 0 && serviceState?.maintenance.length === 0 
+								?	<p>Service disruption.</p>
+								:	serviceState?.instances.length === 0 && serviceState?.interruptions.length === 0 && serviceState?.maintenance.length !== 0 
+									?	<p>Scheduled Maintenance.</p>
+									:	serviceState?.interruptions.length > 0 ? <p>Service outage.</p> : null
+						}
 					</Popover.Body>
 				</Popover>
 			}
@@ -35,6 +48,8 @@ const StatusBar = (props) => {
 	);
 }
 
-StatusBar.propTypes = {}
+StatusBar.propTypes = {
+	serviceState: PropTypes.object.isRequired
+}
 
 export default StatusBar;
