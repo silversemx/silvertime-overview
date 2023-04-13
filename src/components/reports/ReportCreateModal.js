@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button, Container, Form, Modal } from 'react-bootstrap';
 
 // Packages
-import ReactQuill from 'react-quill';
+import ReactQuill, { Quill } from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
 // Components
@@ -36,9 +36,9 @@ const ReportCreateModal = (props) => {
 		dispatch(get_all_service_instance({ service: report.service }));
 	}, [report.service]);
 
-	const closeModalRef = useRef();
-	const quillEditorRef = useRef();
-	const fileInputRef = useRef();
+	const closeModalRef = useRef(null);
+	const quillEditorRef = useRef(null);
+	const fileInputRef = useRef(null);
 
 	const closeModal = () => {
 		onHide();
@@ -51,7 +51,7 @@ const ReportCreateModal = (props) => {
 	}
 
 	const onChangeEditor = () => {
-		const delta = quillEditorRef.current.getEditor().getContents();
+		const delta = quillEditorRef?.current?.getEditor()?.getContents();
 		setReport({ ...report, text: delta });
 	}
 
