@@ -21,7 +21,6 @@ const Header = () => {
 						<Container className='nav-container' fluid>
 							<Nav.Link href='/services' className='header-link' active={location.pathname.includes('/service')}>Services</Nav.Link>
 							<Nav.Link href='/maintenance' className='header-link' active={location.pathname.includes('/maintenance')}>Maintenance</Nav.Link>
-							<Nav.Link href='/incidents' className='header-link' active={location.pathname.includes('/incidents')}>Incidents</Nav.Link>
 							<Nav.Link href='/reports' className='header-link' active={location.pathname.includes('/reports')}>Reports</Nav.Link>
 						</Container>
 					</Nav>
