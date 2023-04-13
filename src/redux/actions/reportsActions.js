@@ -21,6 +21,7 @@ export const create_report = (reportInfo, closeModalRef) => dispatch => {
 	}
 
 	formData.append('type', reportInfo.type);
+	formData.append('title', reportInfo.title);
 	formData.append('text', JSON.stringify(reportInfo.text));
 	formData.append('image', reportInfo.image);
 

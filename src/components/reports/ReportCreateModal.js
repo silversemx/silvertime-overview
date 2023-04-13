@@ -25,7 +25,7 @@ const ReportCreateModal = (props) => {
 
 	const { all_services, service_instances } = useSelector(state => state.services);
 
-	const initialReportState = { priority: '', scope: '', type: '', service: '', instance: '', text: '', image: null };
+	const initialReportState = { priority: '', scope: '', type: '', service: '', instance: '', title: '', text: '', image: null };
 	const [report, setReport] = useState(initialReportState);
 
 	useEffect(() => {
@@ -135,6 +135,10 @@ const ReportCreateModal = (props) => {
 							value={report.type}
 							onChange={(e) => setReport({ ...report, type: e !== null ? e.value : '' })}
 						/>
+					</Container>
+					<Container className='mb-3 p-0' fluid>
+						<p className='mb-2'>Title</p>
+						<Form.Control onChange={(e) => setReport({ ...report, title: e.target.value })} />
 					</Container>
 					<Container className='mb-3 p-0' fluid>
 						<p className='mb-2'>Text</p>
