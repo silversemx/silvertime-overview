@@ -18,14 +18,6 @@ const Footer = () => {
 						<p><a href='true'>Cookies Advertisement</a></p>
 					</div>
 				</div>
-				<div className='footer-section'>
-					<p className='footer-header'>About</p>
-					<div className='footer-content'>
-						<a href='https://www.astrazeneca.mx'>
-							<img style={{ height: '100px' }} src={process.env.PUBLIC_URL + '/assets/astrazeneca.png'} alt='Astrazeneca' />
-						</a>
-					</div>
-				</div>
 			</div>
 			<div className='container footer-copyright'>
 				<p className='my-0'>&copy; { new Date().getFullYear() } Silverse. All Rights Reserved.</p>

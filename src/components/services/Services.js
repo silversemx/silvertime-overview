@@ -46,7 +46,7 @@ const Services = () => {
 			/>
 
 			<h2>Services</h2>
-			<p className='mb-4'>This page is used to display the status of AstraZeneca's services.</p>
+			<p className='mb-4'>This page is used to display the status of the services.</p>
 
 			<p style={ allSystemsStyles }>All Services Operational</p>
 			<hr/>
